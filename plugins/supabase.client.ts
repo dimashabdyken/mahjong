@@ -3,9 +3,9 @@ import { createClient } from '@supabase/supabase-js'
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig()
   const supabaseUrl =
-    config.public.supabaseUrl || 'https://placeholder.supabase.co'
+    String(config.public.supabaseUrl || '').trim() || 'https://placeholder.supabase.co'
   const supabaseAnonKey =
-    config.public.supabaseAnonKey || 'placeholder-anon-key'
+    String(config.public.supabaseAnonKey || '').trim() || 'placeholder-anon-key'
 
   if (!config.public.supabaseUrl || !config.public.supabaseAnonKey) {
     console.warn(

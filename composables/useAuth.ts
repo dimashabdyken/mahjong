@@ -57,21 +57,29 @@ export const useAuth = () => {
       return
     }
 
-    const { data: existing } = await supabase
+    const { data: existing, error: selectError } = await supabase
       .from('profiles')
       .select('id')
       .eq('id', user.value.id)
       .maybeSingle()
 
+    if (selectError) {
+      throw selectError
+    }
+
     if (existing) {
       return
     }
 
-    await supabase.from('profiles').insert({
+    const { error: insertError } = await supabase.from('profiles').insert({
       id: user.value.id,
       nickname: draft?.nickname || user.value.email?.split('@')[0] || 'Focused Player',
       city: draft?.city || 'Almaty'
     })
+
+    if (insertError) {
+      throw insertError
+    }
   }
 
   const signIn = async (email: string, password: string) => {
