@@ -1,0 +1,432 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --color-ink: 21% 0.028 154;
+  --color-mist: 94% 0.022 104;
+  --color-moss: 48% 0.061 136;
+  --color-jade: 48% 0.105 157;
+  --color-porcelain: 98% 0.012 82;
+  --color-ember: 56% 0.118 48;
+  --color-rice: 96% 0.026 88;
+  --color-lacquer: 31% 0.069 31;
+  --color-bamboo: 67% 0.106 127;
+  --app-bg: oklch(var(--color-porcelain));
+  --surface: oklch(100% 0 0 / 0.8);
+  --surface-soft: oklch(var(--color-rice) / 0.8);
+  --surface-muted: oklch(var(--color-mist));
+  --text-main: oklch(var(--color-ink));
+  --text-muted: oklch(var(--color-ink) / 0.62);
+  --border: oklch(var(--color-ink) / 0.1);
+  --accent: oklch(var(--color-jade));
+  --accent-soft: oklch(var(--color-jade) / 0.12);
+  --button-bg: oklch(var(--color-ink));
+  --button-text: oklch(var(--color-porcelain));
+  --button-secondary-bg: oklch(var(--color-rice) / 0.5);
+  --input-bg: oklch(var(--color-rice));
+  --input-border: oklch(var(--color-ink) / 0.15);
+  --shadow: 0 2px 8px oklch(var(--color-ink) / 0.1);
+}
+
+:root.dark {
+  color-scheme: dark;
+  --app-bg: oklch(18% 0.026 68);
+  --surface: oklch(24% 0.024 68 / 0.9);
+  --surface-soft: oklch(28% 0.027 72 / 0.86);
+  --surface-muted: oklch(31% 0.026 74);
+  --text-main: oklch(94% 0.022 84);
+  --text-muted: oklch(86% 0.025 82 / 0.72);
+  --border: oklch(84% 0.025 82 / 0.13);
+  --accent: oklch(70% 0.11 154);
+  --accent-soft: oklch(70% 0.11 154 / 0.16);
+  --button-bg: oklch(36% 0.082 152);
+  --button-text: oklch(94% 0.022 84);
+  --button-secondary-bg: oklch(94% 0.022 84 / 0.06);
+  --input-bg: oklch(21% 0.024 68);
+  --input-border: oklch(84% 0.025 82 / 0.16);
+  --shadow: 0 16px 36px oklch(8% 0.02 68 / 0.32);
+}
+
+html {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  @apply antialiased;
+  max-width: 100%;
+  overflow-x: clip;
+  color: var(--text-main);
+  background-color: var(--app-bg);
+  background-image:
+    linear-gradient(90deg, oklch(21% 0.028 154 / 0.035) 1px, transparent 1px),
+    linear-gradient(0deg, oklch(21% 0.028 154 / 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 18% 12%, oklch(67% 0.106 127 / 0.14), transparent 28rem),
+    radial-gradient(circle at 88% 8%, oklch(56% 0.118 48 / 0.1), transparent 24rem);
+  background-position: center top;
+  background-size: 34px 34px, 34px 34px, auto, auto;
+}
+
+:root.dark body {
+  background-image:
+    linear-gradient(90deg, oklch(94% 0.022 84 / 0.045) 1px, transparent 1px),
+    linear-gradient(0deg, oklch(94% 0.022 84 / 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 16% 10%, oklch(70% 0.11 154 / 0.12), transparent 27rem),
+    radial-gradient(circle at 88% 6%, oklch(58% 0.095 54 / 0.12), transparent 22rem);
+}
+
+.focus-ring {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-jade focus-visible:ring-offset-2 focus-visible:ring-offset-porcelain dark:focus-visible:ring-offset-ink;
+}
+
+.page-shell {
+  @apply mx-auto w-full max-w-6xl px-3 py-6 sm:px-4 sm:py-10 lg:py-12;
+}
+
+.section-kicker {
+  @apply text-sm font-semibold text-jade;
+}
+
+.page-title {
+  @apply mt-2 text-3xl font-semibold tracking-normal text-ink dark:text-porcelain sm:text-4xl;
+}
+
+.page-copy {
+  @apply mt-3 max-w-2xl text-ink/60 dark:text-porcelain/60;
+}
+
+.panel {
+  @apply rounded-lg shadow-soft;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.soft-panel {
+  @apply rounded-lg;
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+}
+
+.button-primary {
+  @apply focus-ring inline-flex min-h-11 items-center justify-center rounded-lg px-5 py-3 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60;
+  color: var(--button-text);
+  background: var(--button-bg);
+}
+
+.button-primary:hover {
+  background: oklch(var(--color-lacquer));
+}
+
+:root.dark .button-primary:hover {
+  background: oklch(42% 0.095 154);
+}
+
+.button-secondary {
+  @apply focus-ring inline-flex min-h-11 items-center justify-center rounded-lg px-5 py-3 text-sm font-semibold transition;
+  color: var(--text-main);
+  border: 1px solid color-mix(in oklch, var(--border), var(--accent) 22%);
+  background: var(--button-secondary-bg);
+}
+
+.button-secondary:hover {
+  border-color: var(--accent);
+  background: var(--surface-muted);
+}
+
+.button-premium {
+  @apply focus-ring inline-flex min-h-11 items-center justify-center rounded-lg px-5 py-3 text-sm font-semibold transition;
+  color: oklch(var(--color-porcelain));
+  border: 1px solid oklch(var(--color-lacquer) / 0.35);
+  background: oklch(var(--color-lacquer));
+}
+
+.button-premium:hover {
+  background: oklch(var(--color-ink));
+}
+
+:root.dark .button-premium:hover {
+  background: oklch(26% 0.028 62);
+}
+
+.mahjong-board {
+  position: absolute;
+  inset: 0 auto auto 0;
+  transform: translateZ(0);
+  transform-origin: top left;
+}
+
+.mahjong-board-viewport {
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.mahjong-board-sizer {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.mahjong-table {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  --tile-bg: oklch(96% 0.026 88);
+  --tile-bg-glow: oklch(98% 0.012 82 / 0.82);
+  --tile-border: oklch(79% 0.035 82);
+  --tile-side: oklch(74% 0.044 82 / 0.55);
+  --tile-inset: oklch(88% 0.035 82 / 0.7);
+  --tile-face-line: oklch(98% 0.012 82 / 0.52);
+  --tile-symbol-primary: oklch(21% 0.028 154);
+  --tile-symbol-red: oklch(56% 0.118 48);
+  --tile-symbol-green: oklch(48% 0.105 157);
+  --tile-selected-border: oklch(48% 0.105 157 / 0.84);
+  --tile-selected-ring: oklch(48% 0.105 157 / 0.82);
+  --tile-hint-border: oklch(74% 0.11 82 / 0.72);
+  --tile-hint-ring: oklch(78% 0.12 82 / 0.64);
+  --tile-coach-border: oklch(48% 0.105 157 / 0.84);
+  --tile-coach-ring: oklch(48% 0.105 157 / 0.78);
+}
+
+@media (max-width: 480px) {
+  .panel,
+  .soft-panel,
+  .mahjong-table {
+    border-radius: 0.5rem;
+  }
+}
+
+.mahjong-table[data-tile-theme="jade"] {
+  --tile-bg: oklch(88% 0.065 158);
+  --tile-bg-glow: oklch(97% 0.035 164 / 0.86);
+  --tile-border: oklch(62% 0.105 156);
+  --tile-side: oklch(48% 0.096 154 / 0.5);
+  --tile-inset: oklch(76% 0.08 158 / 0.72);
+  --tile-face-line: oklch(96% 0.026 160 / 0.6);
+  --tile-symbol-primary: oklch(22% 0.045 160);
+  --tile-symbol-red: oklch(49% 0.13 30);
+  --tile-symbol-green: oklch(35% 0.118 158);
+  --tile-selected-border: oklch(43% 0.125 158 / 0.9);
+  --tile-selected-ring: oklch(51% 0.12 158 / 0.66);
+  --tile-coach-border: oklch(43% 0.125 158 / 0.86);
+  --tile-coach-ring: oklch(51% 0.12 158 / 0.6);
+}
+
+.mahjong-table[data-tile-theme="imperial"] {
+  --tile-bg: oklch(95% 0.025 79);
+  --tile-bg-glow: oklch(99% 0.018 86 / 0.86);
+  --tile-border: oklch(68% 0.075 55);
+  --tile-side: oklch(58% 0.09 45 / 0.48);
+  --tile-inset: oklch(82% 0.08 72 / 0.62);
+  --tile-face-line: oklch(82% 0.105 72 / 0.36);
+  --tile-symbol-primary: oklch(27% 0.06 34);
+  --tile-symbol-red: oklch(48% 0.16 31);
+  --tile-symbol-green: oklch(38% 0.09 139);
+  --tile-selected-border: oklch(52% 0.14 35 / 0.88);
+  --tile-selected-ring: oklch(68% 0.12 68 / 0.68);
+  --tile-coach-border: oklch(48% 0.12 138 / 0.78);
+  --tile-coach-ring: oklch(62% 0.12 132 / 0.5);
+}
+
+.mahjong-table[data-tile-theme="porcelain"] {
+  --tile-bg: oklch(97% 0.018 245);
+  --tile-bg-glow: oklch(100% 0.006 250 / 0.9);
+  --tile-border: oklch(70% 0.055 244);
+  --tile-side: oklch(60% 0.068 242 / 0.44);
+  --tile-inset: oklch(86% 0.045 238 / 0.66);
+  --tile-face-line: oklch(74% 0.065 246 / 0.32);
+  --tile-symbol-primary: oklch(29% 0.085 252);
+  --tile-symbol-red: oklch(50% 0.13 25);
+  --tile-symbol-green: oklch(37% 0.1 180);
+  --tile-selected-border: oklch(50% 0.115 248 / 0.88);
+  --tile-selected-ring: oklch(58% 0.11 246 / 0.58);
+  --tile-coach-border: oklch(41% 0.105 185 / 0.82);
+  --tile-coach-ring: oklch(54% 0.1 188 / 0.52);
+}
+
+.mahjong-table[data-tile-theme="sakura"] {
+  --tile-bg: oklch(96% 0.03 25);
+  --tile-bg-glow: oklch(99% 0.025 36 / 0.88);
+  --tile-border: oklch(79% 0.065 18);
+  --tile-side: oklch(70% 0.075 18 / 0.45);
+  --tile-inset: oklch(88% 0.052 25 / 0.62);
+  --tile-face-line: oklch(86% 0.055 18 / 0.36);
+  --tile-symbol-primary: oklch(28% 0.04 20);
+  --tile-symbol-red: oklch(56% 0.14 18);
+  --tile-symbol-green: oklch(42% 0.09 142);
+  --tile-selected-border: oklch(62% 0.13 12 / 0.84);
+  --tile-selected-ring: oklch(75% 0.105 18 / 0.58);
+  --tile-coach-border: oklch(42% 0.095 148 / 0.78);
+  --tile-coach-ring: oklch(65% 0.09 145 / 0.48);
+}
+
+:root.dark [class*="dark:text-porcelain/45"],
+:root.dark [class*="dark:text-porcelain/50"] {
+  color: oklch(86% 0.025 82 / 0.62);
+}
+
+:root.dark [class*="dark:text-porcelain/55"],
+:root.dark [class*="dark:text-porcelain/60"],
+:root.dark [class*="dark:text-porcelain/62"] {
+  color: oklch(87% 0.025 82 / 0.7);
+}
+
+:root.dark [class*="dark:text-porcelain/65"],
+:root.dark [class*="dark:text-porcelain/70"] {
+  color: oklch(88% 0.025 82 / 0.76);
+}
+
+:root.dark .mahjong-table[data-tile-theme="imperial"] {
+  --tile-symbol-red: oklch(43% 0.12 31);
+  --tile-symbol-green: oklch(36% 0.075 138);
+  --tile-selected-border: oklch(49% 0.12 38 / 0.78);
+  --tile-selected-ring: oklch(66% 0.105 70 / 0.5);
+  --tile-coach-border: oklch(42% 0.095 138 / 0.72);
+  --tile-coach-ring: oklch(58% 0.1 132 / 0.42);
+}
+
+:root.dark .mahjong-table[data-tile-theme="sakura"] {
+  --tile-symbol-red: oklch(50% 0.105 18);
+  --tile-symbol-green: oklch(39% 0.078 142);
+  --tile-selected-border: oklch(56% 0.105 14 / 0.78);
+  --tile-selected-ring: oklch(70% 0.08 20 / 0.46);
+  --tile-coach-border: oklch(39% 0.08 148 / 0.72);
+  --tile-coach-ring: oklch(60% 0.075 145 / 0.4);
+}
+
+.mahjong-tile {
+  isolation: isolate;
+  width: 64px;
+  height: 82px;
+  transform: translateZ(0);
+  color: var(--tile-symbol-primary);
+  border-color: var(--tile-border);
+  background:
+    radial-gradient(circle at 36% 18%, var(--tile-bg-glow), transparent 48%),
+    var(--tile-bg);
+  box-shadow:
+    0 3px 8px oklch(21% 0.028 154 / 0.12),
+    inset 0 -2px 0 var(--tile-inset),
+    inset 0 0 0 1px oklch(98% 0.012 82 / 0.82);
+}
+
+.mahjong-tile::before {
+  content: "";
+  position: absolute;
+  inset: auto -2px -2px 4px;
+  z-index: -1;
+  height: 5px;
+  border-radius: 0 0 7px 7px;
+  background: var(--tile-side);
+  box-shadow: 0 2px 4px oklch(21% 0.028 154 / 0.06);
+}
+
+.mahjong-tile::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  z-index: 0;
+  border-radius: 5px;
+  background: oklch(98% 0.012 82 / 0.24);
+  box-shadow: inset 0 0 0 1px var(--tile-face-line);
+  pointer-events: none;
+}
+
+.mahjong-tile--free:hover {
+  border-color: var(--tile-selected-border);
+  box-shadow:
+    0 4px 10px oklch(var(--color-ink) / 0.13),
+    inset 0 -2px 0 var(--tile-inset),
+    inset 0 0 0 1px oklch(98% 0.012 82 / 0.9);
+}
+
+.mahjong-tile--selected {
+  border-color: var(--tile-selected-border);
+  color: oklch(21% 0.028 154);
+  box-shadow:
+    0 0 0 2px var(--tile-selected-ring),
+    0 3px 8px oklch(21% 0.028 154 / 0.13),
+    inset 0 0 0 1px oklch(98% 0.012 82 / 0.92);
+}
+
+.mahjong-tile--hinted {
+  border-color: var(--tile-hint-border);
+  color: oklch(21% 0.028 154);
+  box-shadow:
+    0 0 0 2px var(--tile-hint-ring),
+    0 0 14px oklch(80% 0.13 86 / 0.36),
+    0 3px 8px oklch(21% 0.028 154 / 0.12),
+    inset 0 0 0 1px oklch(98% 0.012 82 / 0.9);
+}
+
+.mahjong-tile--coach-highlighted {
+  border-color: var(--tile-coach-border);
+  color: oklch(21% 0.028 154);
+  box-shadow:
+    0 0 0 2px var(--tile-coach-ring),
+    inset 0 0 0 1px oklch(48% 0.105 157 / 0.24),
+    0 3px 8px oklch(21% 0.028 154 / 0.12);
+}
+
+.mahjong-tile--blocked {
+  color: oklch(21% 0.028 154 / 0.38);
+  border-color: oklch(21% 0.028 154 / 0.07);
+  box-shadow:
+    0 2px 5px oklch(21% 0.028 154 / 0.06),
+    inset 0 0 0 1px oklch(98% 0.012 82 / 0.62);
+}
+
+.mahjong-tile > * {
+  position: relative;
+  z-index: 1;
+}
+
+.mahjong-tile-symbol--primary {
+  color: var(--tile-symbol-primary);
+}
+
+.mahjong-tile-symbol--green {
+  color: var(--tile-symbol-green);
+}
+
+.mahjong-tile-symbol--red {
+  color: var(--tile-symbol-red);
+}
+
+.mahjong-tile-symbol--selected,
+.mahjong-tile-symbol--coach {
+  color: var(--tile-symbol-green);
+}
+
+.mahjong-tile-symbol--hinted {
+  color: var(--tile-symbol-red);
+}
+
+.mahjong-table {
+  border: 1px solid oklch(var(--color-jade) / 0.16);
+  background:
+    radial-gradient(circle at 50% 46%, oklch(92% 0.045 138 / 0.7), transparent 28rem),
+    linear-gradient(90deg, oklch(var(--color-porcelain) / 0.16) 1px, transparent 1px),
+    linear-gradient(0deg, oklch(var(--color-porcelain) / 0.12) 1px, transparent 1px),
+    oklch(83% 0.045 138 / 0.88);
+  background-size: auto, 30px 30px, 30px 30px, auto;
+  box-shadow:
+    0 16px 34px oklch(var(--color-ink) / 0.14),
+    inset 0 0 0 1px oklch(var(--color-porcelain) / 0.45);
+}
+
+:root.dark .mahjong-table {
+  border-color: oklch(var(--color-jade) / 0.2);
+  background:
+    radial-gradient(circle at 50% 46%, oklch(35% 0.045 138 / 0.84), transparent 28rem),
+    linear-gradient(90deg, oklch(var(--color-porcelain) / 0.06) 1px, transparent 1px),
+    linear-gradient(0deg, oklch(var(--color-porcelain) / 0.05) 1px, transparent 1px),
+    oklch(23% 0.036 126 / 0.92);
+  box-shadow:
+    0 18px 38px oklch(8% 0.02 68 / 0.42),
+    inset 0 0 0 1px oklch(var(--color-porcelain) / 0.08);
+}
