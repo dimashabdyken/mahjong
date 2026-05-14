@@ -4,19 +4,21 @@ A calm, responsive Mahjong Solitaire web app with Daily Challenge, AI Coach, Pro
 
 ## Screenshots
 
-> Add screenshots to `public/screenshots/` and update these paths.
-
-| Landing / Play | Daily Challenge |
+| Landing | Classic Play |
 |---|---|
-| ![Play page](public/screenshots/play.png) | ![Daily challenge](public/screenshots/daily.png) |
+| ![Landing page](public/screenshots/landing.png) | ![Classic play](public/screenshots/classic-play.png) |
 
-| Profile / Insights | Pro Dashboard |
+| AI Coach Pro | Daily Challenge |
 |---|---|
-| ![Profile](public/screenshots/profile.png) | ![Pro page](public/screenshots/pro.png) |
+| ![AI Coach Pro](public/screenshots/ai-coach-pro.png) | ![Daily challenge](public/screenshots/daily-challenge.png) |
 
-| Dark Mode | Mobile |
+| Leaderboards | Full Leaderboard |
 |---|---|
-| ![Dark mode](public/screenshots/dark-mode.png) | ![Mobile](public/screenshots/mobile.png) |
+| ![Leaderboards](public/screenshots/leaderboards.png) | ![Full leaderboard](public/screenshots/leaderboards-full.png) |
+
+| Pro Dashboard | Profile Insights |
+|---|---|
+| ![Pro dashboard](public/screenshots/pro-dashboard.png) | ![Profile insights](public/screenshots/profile-insights.png) |
 
 ## Features
 
