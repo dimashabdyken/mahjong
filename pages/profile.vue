@@ -17,17 +17,10 @@ onMounted(dashboard.fetchDashboard)
 
 <template>
   <section class="mx-auto w-full max-w-[76rem] px-3 py-6 sm:px-6 sm:py-8">
-    <div class="mb-5 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+    <div class="mb-5">
       <div>
         <h1 class="mt-1.5 text-4xl font-semibold tracking-normal text-ink dark:text-porcelain">Profile</h1>
       </div>
-
-      <NuxtLink
-        class="button-primary w-full sm:w-auto"
-        to="/daily"
-      >
-        Play Daily
-      </NuxtLink>
     </div>
 
     <div
