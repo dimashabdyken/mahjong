@@ -11,6 +11,7 @@ This project uses a **demo Pro activation flow**. The checkout screen is fake an
 - No card data is sent to a payment provider.
 - No card data is stored by the app.
 - You can use any valid-looking demo card details: 16 digits, a future `MM/YY` date, and a 3-digit CVC.
+- The Pro section below is where the unlocked features are listed for review.
 
 Please test the full application flow, not only the landing page:
 
@@ -74,7 +75,7 @@ Please test the full application flow, not only the landing page:
 
 ### Pro Features
 
-- Demo Pro activation
+- Pro tier unlock
 - Premium tile themes
 - Multiple board layouts
 - Deeper AI Coach
@@ -188,10 +189,6 @@ Recommended deployment target: Vercel.
 3. Add the required Supabase environment variables.
 4. Deploy.
 5. Add the Vercel URL and reset-password URL to Supabase Auth redirect settings.
-
-## Pro Activation Note
-
-The Pro flow is intentionally a fake/demo payment flow for this MVP. It only validates demo-looking form fields and then unlocks Pro features inside the app. It does not connect to Stripe or any other payment provider, does not charge money, and does not store real card data.
 
 ## Project Notes
 
