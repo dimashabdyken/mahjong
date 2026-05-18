@@ -2,6 +2,27 @@
 
 A calm, responsive Mahjong Solitaire web app with Daily Challenge, AI Coach, Pro features, Supabase Auth, leaderboards, themes, layouts, progress insights, focus sessions, and dark mode.
 
+## Important for Reviewers
+
+This project uses a **demo Pro activation flow**. The checkout screen is fake and is included only to demonstrate the upgrade UX for the assignment.
+
+- No real payment is processed.
+- No money will be charged.
+- No card data is sent to a payment provider.
+- No card data is stored by the app.
+- You can use any valid-looking demo card details: 16 digits, a future `MM/YY` date, and a 3-digit CVC.
+
+Please test the full application flow, not only the landing page:
+
+1. Register or log in with Supabase Auth.
+2. Play Classic Mahjong and finish a game if possible.
+3. Try Daily Challenge.
+4. Open AI Coach during gameplay.
+5. Check leaderboards.
+6. Visit the profile page and review stats/progress.
+7. Open the Pro page and activate the demo Pro mode.
+8. After demo Pro activation, test premium themes, board layouts, deeper AI Coach, progress insights, and focus sessions.
+
 ## Screenshots
 
 | Landing | Classic Play |
@@ -170,7 +191,7 @@ Recommended deployment target: Vercel.
 
 ## Pro Activation Note
 
-The Pro flow is a demo activation for this MVP. It does not process real payments, request card details, or store card data.
+The Pro flow is intentionally a fake/demo payment flow for this MVP. It only validates demo-looking form fields and then unlocks Pro features inside the app. It does not connect to Stripe or any other payment provider, does not charge money, and does not store real card data.
 
 ## Project Notes
 
